@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModeloBasico", "ModeloBasico.csproj", "{A4F957A9-1589-45BD-88DA-FB566472D382}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4F957A9-1589-45BD-88DA-FB566472D382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F957A9-1589-45BD-88DA-FB566472D382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F957A9-1589-45BD-88DA-FB566472D382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F957A9-1589-45BD-88DA-FB566472D382}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C63BBA4-0DE0-4766-A264-7653D5ECF44D}
+	EndGlobalSection
+EndGlobal
