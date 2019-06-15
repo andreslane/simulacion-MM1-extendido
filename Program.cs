@@ -6,7 +6,7 @@ namespace ModeloBasico
     {
         static void Main(string[] args)
         {
-            var modelo = new Modelo();
+            var modelo = new Modelo(); // Checkout?
             modelo.IniciarSimulacion();
         }
     }
