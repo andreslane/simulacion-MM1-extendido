@@ -1,4 +1,6 @@
 ﻿using ModeloBasico.App;
+using ModeloBasico.Infraestructura;
+using System;
 
 namespace ModeloBasico
 {
@@ -6,8 +8,18 @@ namespace ModeloBasico
     {
         static void Main(string[] args)
         {
-            var modelo = new Modelo(); // Checkout?
-            modelo.IniciarSimulacion();
+            var injector = new InjectGeneradores();
+
+            try
+            {
+                var modelo = new Modelo(injector);
+                modelo.IniciarSimulacion();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+            }
         }
     }
 }

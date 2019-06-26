@@ -1,19 +1,40 @@
 ﻿using ModeloBasico.GeneradoresAleatorios;
+using ModeloBasico.GeneradoresAleatorios.NumerosAleatorios;
 
 namespace ModeloBasico.Infraestructura
 {
-    public static class InjectGeneradores
+    // Esta clase debe instanciarse en un unico lugar de toda la app.
+    public class InjectGeneradores
     {
-        public static IGeneradorArribos InjectGeneradorDeArribos()
+
+        private IGeneradorArribos generadorArribos;
+        public IGeneradorArribos InjectGeneradorDeArribos()
         {
-            return new GeneradorArribosAleatorios();
-            //return new GeneradorArribosAleatoriosParaEjemploLibro();
+            if (this.generadorArribos == null)
+            {
+                this.generadorArribos = new GeneradorArribosDistribucionExponencial(0.7m, this.InjectGeneradorNumerosAleatorios());
+            }
+            return this.generadorArribos;
         }
 
-        public static IGeneradorPartidas InjectGeneradorDePartidas()
+        private IGeneradorPartidas generadorPartidas;
+        public IGeneradorPartidas InjectGeneradorDePartidas()
         {
-            return new GeneradorPartidasAleatorias();
-            //return new GeneradorPartidasAleatoriasParaEjemploLibro();
+            if (this.generadorPartidas == null)
+            {
+                this.generadorPartidas = new GeneradorPartidasDistribucionExponencial(0.66m, this.InjectGeneradorNumerosAleatorios());
+            }
+            return this.generadorPartidas;
+        }
+
+        private IGeneradorNumerosAleatorios generadorNumerosAleatorios;
+        public IGeneradorNumerosAleatorios InjectGeneradorNumerosAleatorios()
+        {
+            if (this.generadorNumerosAleatorios == null)
+            {
+                this.generadorNumerosAleatorios = new GeneradorNumerosAleatoriosUniformeEjemplo();
+            }
+            return this.generadorNumerosAleatorios;
         }
     }
 }

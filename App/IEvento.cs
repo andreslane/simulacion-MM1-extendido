@@ -1,6 +1,6 @@
 ﻿namespace ModeloBasico.App
 {
-    internal interface IEvento
+    public interface IEvento
     {
         void RutinaEvento(Modelo modelo);
     }

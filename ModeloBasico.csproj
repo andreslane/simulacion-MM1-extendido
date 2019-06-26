@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneradoresAleatorios\GeneradorArribosAleatorios.cs" />
-    <Compile Include="GeneradoresAleatorios\GeneradorArribosAleatoriosParaEjemploLibro.cs" />
-    <Compile Include="GeneradoresAleatorios\GeneradorPartidasAleatorias.cs" />
-    <Compile Include="GeneradoresAleatorios\GeneradorPartidasAleatoriasParaEjemploLibro.cs" />
-    <Compile Include="GeneradoresAleatorios\IGeneradorArribos.cs" />
-    <Compile Include="GeneradoresAleatorios\IGeneradorPartidas.cs" />
+    <Compile Include="GeneradoresAleatorios\Arribos\GeneradorArribosDistribucionExponencial.cs" />
+    <Compile Include="GeneradoresAleatorios\Arribos\GeneradorArribosEjemploLibro.cs" />
+    <Compile Include="GeneradoresAleatorios\Partidas\GeneradorPartidasDistribucionExponencial.cs" />
+    <Compile Include="GeneradoresAleatorios\Partidas\GeneradorPartidasEjemploLibro.cs" />
+    <Compile Include="GeneradoresAleatorios\Arribos\IGeneradorArribos.cs" />
+    <Compile Include="GeneradoresAleatorios\Partidas\IGeneradorPartidas.cs" />
+    <Compile Include="GeneradoresAleatorios\NumerosAleatorios\GeneradorNumerosAleatoriosUniforme.cs" />
+    <Compile Include="GeneradoresAleatorios\NumerosAleatorios\GeneradorNumerosAleatoriosUniformeEjemplo.cs" />
+    <Compile Include="GeneradoresAleatorios\NumerosAleatorios\IGeneradorNumerosAleatorios.cs" />
     <Compile Include="Infraestructura\InjectGeneradores.cs" />
     <Compile Include="App\EventoArribo.cs" />
     <Compile Include="App\EventoPartida.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="App\Modelo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte\ReporteConsola.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

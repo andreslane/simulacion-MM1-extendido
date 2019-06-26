@@ -1,5 +1,6 @@
 ﻿using ModeloBasico.GeneradoresAleatorios;
 using ModeloBasico.Infraestructura;
+using ModeloBasico.Reporte;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace ModeloBasico.App
     {
         private readonly IGeneradorArribos GeneradorArribos;
         private readonly IGeneradorPartidas GeneradorPartidas;
+        private readonly ReporteConsola Reporte;
 
-        public Modelo()
+        public Modelo(InjectGeneradores injector)
         {
             // Implementamos estos "instanciadores" para abstraernos de la generacion de numeros aleatorios.
-            this.GeneradorArribos = InjectGeneradores.InjectGeneradorDeArribos();
-            this.GeneradorPartidas = InjectGeneradores.InjectGeneradorDePartidas();
+            this.GeneradorArribos = injector.InjectGeneradorDeArribos();
+            this.GeneradorPartidas = injector.InjectGeneradorDePartidas();
+            this.Reporte = new ReporteConsola();
 
             // Rutina inicializacion. 
             // 1. Reloj de simulacion en 0. (Se hace por defecto)
@@ -31,17 +34,20 @@ namespace ModeloBasico.App
             {
                 { 'A', new Tuple<decimal, IEvento>(primerArribo, new EventoArribo()) },
                 { 'P', new Tuple<decimal, IEvento>(decimal.MaxValue, new EventoPartida()) }
-            }; 
+            };
+
+            // Registramos paso inicializacion en reporte.
+            this.Reporte.RegistrarEvento(this);
         }
 
         public bool ServidorOcupado { get; private set; }
         public int CantidadEnCola { get { return this.ColaDeTiemposDeArribo.Count;  } }
 
-        private List<decimal> ColaDeTiemposDeArribo { get; set; } // times of arrival.
+        public List<decimal> ColaDeTiemposDeArribo { get; private set; } // times of arrival.
         public decimal TiempoDelUltimoEvento { get; private set; } 
 
-        private decimal Reloj { get; set; }
-        private Dictionary<char, Tuple<decimal, IEvento>> ListaDeEventos { get; set; }
+        public decimal Reloj { get; private set; }
+        public Dictionary<char, Tuple<decimal, IEvento>> ListaDeEventos { get; private set; }
 
         public int CantidadDeDemorasCompletadas { get; private set; } // Number delayed
         public decimal TotalDemora { get; private set; } // Total delay
@@ -51,10 +57,12 @@ namespace ModeloBasico.App
         public void IniciarSimulacion()
         {
 
-            while (this.CantidadDeDemorasCompletadas < 6) // Condicion de fin de simulacion: cuando cantidad de demoras sea 6. Pagina 25.
+            while (this.CantidadDeDemorasCompletadas < 20) // Condicion de fin de simulacion: cuando cantidad de demoras sea 6. Pagina 25.
             {
                 IEvento evento = this.RutinaDeTiempo();
                 evento.RutinaEvento(this);
+
+                this.Reporte.RegistrarEvento(this);
             }
         }
 
