@@ -8,17 +8,21 @@ namespace ModeloBasico
     {
         static void Main(string[] args)
         {
-            var injector = new InjectGeneradores();
+            var container = new IoCContainer();
 
             try
             {
-                var modelo = new Modelo(injector);
+                var modelo = new Modelo(container);
                 modelo.IniciarSimulacion();
             }
             catch (InvalidOperationException e)
             {
                 Console.WriteLine(e.Message);
-                Console.ReadLine();
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine("Continue para cerrar.");
+                    Console.ReadLine();
+                }
             }
         }
     }

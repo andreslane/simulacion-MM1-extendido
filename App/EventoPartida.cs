@@ -1,27 +1,38 @@
-﻿namespace ModeloBasico.App
+﻿using System.Linq;
+
+namespace ModeloBasico.App
 {
-    internal class EventoPartida : IEvento
+    public abstract class EventoPartida : IEvento
     {
+        public abstract Servidor Servidor { get; protected set; } 
+
         public void RutinaEvento(Modelo modelo)
         {
             // Figura 1.9 pagina 32.
 
-            modelo.AcumularAreaBajoB();
+            this.Servidor.AcumularAreaBajoB(modelo);
 
-            if (modelo.CantidadEnCola == 0)
+            if (this.Servidor.ColaPrevia.CantidadEnCola == 0)
             {
-                modelo.EstablecerServidorLibre();
-                modelo.QuitarPartidasDeConsideracion(); // Fuerza que el proximo evento sea un arribo.
+                this.Servidor.EstablecerServidorLibre(); 
+                modelo.QuitarEventoDeConsideracion(this.Servidor.NombreDelEventoDePartida); // Fuerza que el proximo evento sea un arribo.
             }
             else
             {
-                modelo.ComputarDemoraCompletada();
-                modelo.AcumularAreaBajoQ();
+                this.Servidor.ColaPrevia.ComputarDemoraTotal(modelo);
+                this.Servidor.ColaPrevia.AcumularAreaBajoQ(modelo);
 
-                modelo.EstablecerDemoraCompletada();
+                this.Servidor.ColaPrevia.EstablecerDemoraCompletada();
 
-                modelo.EstablecerProximoEventoPartida();
-                modelo.QuitarUltimoDeLaColaDeEspera();
+                modelo.EstablecerProximoEvento(this.Servidor.NombreDelEventoDePartida);
+                this.Servidor.ColaPrevia.QuitarUltimoDeLaColaDeEspera();
+            }
+
+            var cola = this.Servidor.DeterminarColaDeProximoEventoArribo(modelo);
+
+            if (cola != null)
+            {
+                modelo.EstablecerEventoArriboInmediato(cola.NombreDelEventoDeArribo);
             }
         }
     }

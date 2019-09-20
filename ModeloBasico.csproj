@@ -43,6 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Cola.cs" />
+    <Compile Include="App\Colas\ColaA.cs" />
+    <Compile Include="App\Colas\ColaB.cs" />
+    <Compile Include="App\Colas\ColaC.cs" />
+    <Compile Include="App\Colas\ColaUno.cs" />
+    <Compile Include="App\Eventos\ArriboColaA.cs" />
+    <Compile Include="App\Eventos\ArriboColaB.cs" />
+    <Compile Include="App\Eventos\ArriboColaC.cs" />
+    <Compile Include="App\Eventos\ArriboColaUno.cs" />
+    <Compile Include="App\Eventos\PartidaServidorA.cs" />
+    <Compile Include="App\Eventos\PartidaServidorB.cs" />
+    <Compile Include="App\Eventos\PartidaServidorC.cs" />
+    <Compile Include="App\Eventos\PartidaServidorDos.cs" />
+    <Compile Include="App\Eventos\PartidaServidorUno.cs" />
+    <Compile Include="App\Servidor.cs" />
+    <Compile Include="App\Servidores\ServidorA.cs" />
+    <Compile Include="App\Servidores\ServidorB.cs" />
+    <Compile Include="App\Servidores\ServidorC.cs" />
+    <Compile Include="App\Servidores\ServidorDos.cs" />
+    <Compile Include="App\Servidores\ServidorUno.cs" />
+    <Compile Include="Comunes.cs" />
     <Compile Include="GeneradoresAleatorios\Arribos\GeneradorArribosDistribucionExponencial.cs" />
     <Compile Include="GeneradoresAleatorios\Arribos\GeneradorArribosEjemploLibro.cs" />
     <Compile Include="GeneradoresAleatorios\Partidas\GeneradorPartidasDistribucionExponencial.cs" />
@@ -52,7 +73,8 @@
     <Compile Include="GeneradoresAleatorios\NumerosAleatorios\GeneradorNumerosAleatoriosUniforme.cs" />
     <Compile Include="GeneradoresAleatorios\NumerosAleatorios\GeneradorNumerosAleatoriosUniformeEjemplo.cs" />
     <Compile Include="GeneradoresAleatorios\NumerosAleatorios\IGeneradorNumerosAleatorios.cs" />
-    <Compile Include="Infraestructura\InjectGeneradores.cs" />
+    <Compile Include="Infraestructura\Configuraciones.cs" />
+    <Compile Include="Infraestructura\IoCContainer.cs" />
     <Compile Include="App\EventoArribo.cs" />
     <Compile Include="App\EventoPartida.cs" />
     <Compile Include="App\IEvento.cs" />

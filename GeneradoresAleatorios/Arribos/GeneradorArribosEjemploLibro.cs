@@ -15,7 +15,7 @@ namespace ModeloBasico.GeneradoresAleatorios
 
         private readonly List<decimal> ArribosDelEjemplo;
 
-        public decimal ObtenerProximo()
+        public decimal ObtenerProximo(decimal media)
         {
             var numeroAleatorio = this.ArribosDelEjemplo[cantidadDeSolicitudes];
 
