@@ -52,7 +52,7 @@ namespace ModeloBasico.App
                 IEvento evento = this.RutinaDeTiempo();
                 evento.RutinaEvento(this);
 
-                this.reporte.RegistrarEvento(this);
+                //this.reporte.RegistrarEvento(this);
 
                 //Console.ReadKey();
 

@@ -141,8 +141,6 @@ namespace ModeloBasico.Infraestructura
             return this.partidaServidorC;
         }
 
-       
-
         private Cola colaUno;
         public Cola InjectColaUno()
         {

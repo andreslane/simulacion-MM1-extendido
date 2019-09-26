@@ -49,12 +49,15 @@ namespace ModeloBasico.App
 
         public void AgregarALaColaDeEspera(Modelo modelo)
         {
-            this.ColaDeTiemposDeArribo.Add(modelo.Reloj); // FIFO
+            this.ColaDeTiemposDeArribo.Add(modelo.Reloj); // FI - Siempre el primero en llegar queda en la 1er posicion.
+
+            //this.ColaDeTiemposDeArribo.Insert(0, modelo.Reloj); // LI - Siempre el ultimo en llegar queda en la 1er posicion.
+
         }
 
         public void QuitarUltimoDeLaColaDeEspera()
         {
-            this.ColaDeTiemposDeArribo.RemoveAt(0); // FIFO
+            this.ColaDeTiemposDeArribo.RemoveAt(0); // FO
         }
     }
 }

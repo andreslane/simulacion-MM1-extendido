@@ -25,12 +25,12 @@ namespace ModeloBasico.Infraestructura
 
                 { Comunes.ArriboColaUno, 1/0.5m },            
 
-                { Comunes.PartidaServidorUno, 1/0.5m },
-                { Comunes.PartidaServidorDos, 1/0.5m },
+                { Comunes.PartidaServidorUno, 1/0.4m },
+                { Comunes.PartidaServidorDos, 1/0.4m },
 
-                { Comunes.PartidaServidorA, 1/0.125m },
-                { Comunes.PartidaServidorB, 1/0.125m },
-                { Comunes.PartidaServidorC, 1/0.125m },
+                { Comunes.PartidaServidorA, 1/0.2m },
+                { Comunes.PartidaServidorB, 1/0.2m },
+                { Comunes.PartidaServidorC, 1/0.2m },
 
                 // No se configuran ya que dependen de la partida de Servidor Uno y Dos.
 
